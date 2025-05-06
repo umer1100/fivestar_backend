@@ -1,8 +1,11 @@
+// src/app.js
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bankDetailsRoutes = require("./routes/bankDetailsRoutes");
-// TODO: Import other route files when they are created
+const businessRoutes = require("./routes/businessRoutes");
+const salespeopleRoutes = require("./routes/salespeopleRoutes");
+const financeRoutes = require("./routes/financeRoutes");
 
 // Load environment variables
 dotenv.config();
@@ -17,7 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/bank-details", bankDetailsRoutes);
-// TODO: Register other routes here
+app.use("/api/businesses", businessRoutes);
+app.use("/api/salespeople", salespeopleRoutes);
+app.use("/api/finances", financeRoutes);
 
 // Basic route for testing
 app.get("/", (req, res) => {
